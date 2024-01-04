@@ -9,7 +9,7 @@
     )
     (:predicates
         (at ?p - agent  ?square - square)
-        ;(block-at ?o - block  ?square - square)
+        ;(block-at ?o - block  ?square - square) TODO model block position and climbing ability
         (adj ?x ?y - square ?d - direction)
         (pit ?x - square)   
         (facing-north ?p - agent)   
@@ -22,13 +22,18 @@
         (is-east ?d - direction)
         (is-south ?d - direction)
 
-)           
+        (zero-turn ?p - agent)
+        (first-turn ?p - agent)
+        (second-turn ?p - agent)
+        
+
+    )           
     ;; TURN LEFT
     ;; actions to turn left if car faces east
     (:action turn_left_from_east
         :parameters (?p - agent ?from ?to - square ?toDir - direction)
-        :precondition (and (adj ?from ?to ?toDir) (is-north ?toDir) (facing-east ?p) (at ?p ?from) (not (pit ?to)))
-        :effect (and (facing-north ?p) (not (facing-east ?p)) (not (at ?p ?from)) (at ?p ?to))
+        :precondition (and (adj ?from ?to ?toDir) (is-north ?toDir) (facing-east ?p) (at ?p ?from) (not (pit ?to)) (not (second-turn ?p)))
+        :effect (and (facing-north ?p) (not (facing-east ?p)) (not (at ?p ?from)) (at ?p ?to) (first-turn ?p))
     )
     
     ;; actions to turn left if car faces south
@@ -191,4 +196,6 @@
         :precondition (and (adj ?from ?to ?toDir) (is-north ?toDir) (facing-east ?p) (at ?p ?from) (not (pit ?to)))
         :effect (and (facing-south ?p) (not (facing-east ?p)) (not (at ?p ?from)) (at ?p ?to))
     )
+
+    ;; TODO insert constraint on double turns
 )
