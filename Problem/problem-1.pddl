@@ -1,11 +1,11 @@
 (define (problem truck_1)
     (:domain trucks-project-2)
-    (:objects sq-1-1 sq-1-2 sq-1-3 sq-1-4 sq-1-5 
-            sq-2-1 sq-2-2 sq-2-3 sq-2-4 sq-2-5 
-            sq-3-1 sq-3-2 sq-3-3 sq-3-4 sq-3-5 
-            sq-4-1 sq-4-2 sq-4-3 sq-4-4 sq-4-5 
-            sq-5-1 sq-5-2 sq-5-3 sq-5-4 sq-5-5 - square
+    (:objects   
+            sq-1-1 sq-1-2 sq-1-3 
+            sq-2-1 sq-2-2 sq-2-3 
+            sq-3-1 sq-3-2 sq-3-3 - square
             driver - agent
+            b1 b2 b3 b4 b5 - block
             N S W E - direction
     )
 
@@ -40,19 +40,42 @@
         (adj sq-3-2 sq-3-3 E)
         (adj sq-3-3 sq-2-3 S)
         (adj sq-3-3 sq-3-2 W)
+        
+        (pit sq-2-2)
 
-           
         (at driver sq-1-1)
         (facing-north driver)
-       
-        (pit sq-2-1)
-        (pit sq-3-1)
-        (pit sq-3-2)
-        (pit sq-1-3)
+        
+        (block-at b1 sq-2-1)
+        (block-at b2 sq-2-1)
+        (block-at b3 sq-2-1)
+        (block-at b4 sq-2-1)
+        (block-at b5 sq-2-1)
+
+        ; (block-used-for-bridge b1)
+        ; (block-used-for-bridge b2)
+
+
+        (is-clear b1)
+        (is-clear b2)
+        (is-clear b3)
+        (is-clear b4)
+        (is-clear b5)
+
         (zero-turn driver)
+        (is-free driver)
+        (on-ground driver)
+        
+        (= (total-cost) 0)
 
     )
 
-    (:goal (and (at driver sq-3-3) (facing-north driver)))
-    ;;(:goal (stucked driver))
+    ;(:goal (and (at driver sq-3-3) (jammed driver)))
+    ;(:goal  (and (block-at b1 sq-3-3) (block-at b2 sq-3-3)))
+    ;(:goal  (and (block-at b1 sq-3-3) (block-at b2 sq-3-3) (on-top b2 b1) (at driver sq-1-1)) )
+    
+    
+    (:goal (and  (bridge-base-built sq-1-2 sq-3-2)))
+
+    (:metric minimize (total-cost))
 )
