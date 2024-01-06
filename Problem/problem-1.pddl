@@ -1,5 +1,5 @@
 (define (problem truck_1)
-    (:domain trucks-project-2)
+    (:domain trucks-project-4)
     (:objects   
             sq-1-1 sq-1-2 sq-1-3 
             sq-2-1 sq-2-2 sq-2-3 
@@ -41,7 +41,11 @@
         (adj sq-3-3 sq-2-3 S)
         (adj sq-3-3 sq-3-2 W)
         
+        ;;(upper-floor sq-3-3)
+
         (pit sq-2-2)
+        (pit sq-3-2)
+        (pit sq-2-3)
 
         (at driver sq-1-1)
         (facing-north driver)
@@ -49,18 +53,15 @@
         (block-at b1 sq-2-1)
         (block-at b2 sq-2-1)
         (block-at b3 sq-2-1)
-        (block-at b4 sq-2-1)
-        (block-at b5 sq-2-1)
+        ; (block-at b4 sq-2-1)
+        ; (block-at b5 sq-2-1)
 
-        ; (block-used-for-bridge b1)
-        ; (block-used-for-bridge b2)
-
-
+        
         (is-clear b1)
         (is-clear b2)
         (is-clear b3)
-        (is-clear b4)
-        (is-clear b5)
+        ; (is-clear b4)
+        ; (is-clear b5)
 
         (zero-turn driver)
         (is-free driver)
@@ -74,8 +75,11 @@
     ;(:goal  (and (block-at b1 sq-3-3) (block-at b2 sq-3-3)))
     ;(:goal  (and (block-at b1 sq-3-3) (block-at b2 sq-3-3) (on-top b2 b1) (at driver sq-1-1)) )
     
+    ;(:goal (and  (block-at b1 sq-1-2) (at driver sq-1-2) (facing-west driver)))
+    ;(:goal (and  (bridge-top-level-built sq-1-2 sq-3-2)))
+    ;(:goal (and  (bridge-top-level-built sq-1-2 sq-3-2)))
     
-    (:goal (and  (bridge-base-built sq-1-2 sq-3-2)))
+    (:goal (and (at driver sq-3-3)))
 
     (:metric minimize (total-cost))
 )
