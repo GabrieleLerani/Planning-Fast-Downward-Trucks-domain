@@ -1,12 +1,13 @@
 (define (problem truck_1)
-    (:domain trucks-project-4)
+    (:domain trucks-project-5)
     (:objects   
             sq-1-1 sq-1-2 sq-1-3 
             sq-2-1 sq-2-2 sq-2-3 
             sq-3-1 sq-3-2 sq-3-3 - square
             driver - agent
-            b1 b2 b3 b4 b5 - block
+            b1 b2 b3 b4 b5 b6 - block
             N S W E - direction
+            f1 f2 f3 - footbridge
     )
 
     (:init
@@ -41,27 +42,34 @@
         (adj sq-3-3 sq-2-3 S)
         (adj sq-3-3 sq-3-2 W)
         
-        ;;(upper-floor sq-3-3)
+        ;(upper-floor sq-3-3)
 
+        (pit sq-1-2)
+        (pit sq-2-1)
         (pit sq-2-2)
+        ;(pit sq-2-3)
+        (pit sq-3-1)
         (pit sq-3-2)
-        (pit sq-2-3)
 
         (at driver sq-1-1)
         (facing-north driver)
         
-        (block-at b1 sq-2-1)
-        (block-at b2 sq-2-1)
-        (block-at b3 sq-2-1)
-        ; (block-at b4 sq-2-1)
-        ; (block-at b5 sq-2-1)
+        (block-at b1 sq-1-1)
+        (block-at b2 sq-1-1)
+        (block-at b3 sq-1-1)
+        (block-at b4 sq-1-1)
+        (block-at b5 sq-1-1)
+        (block-at b6 sq-1-3)
+        (foot-bridge-at f1 sq-1-1)
+        (foot-bridge-at f2 sq-1-1)
+        (foot-bridge-at f3 sq-1-1)
 
-        
         (is-clear b1)
         (is-clear b2)
         (is-clear b3)
-        ; (is-clear b4)
-        ; (is-clear b5)
+        (is-clear b4)
+        (is-clear b5)
+        (is-clear b6)
 
         (zero-turn driver)
         (is-free driver)
@@ -79,7 +87,23 @@
     ;(:goal (and  (bridge-top-level-built sq-1-2 sq-3-2)))
     ;(:goal (and  (bridge-top-level-built sq-1-2 sq-3-2)))
     
-    (:goal (and (at driver sq-3-3)))
+    ;(:goal (and (at driver sq-2-3)))
+    ;(:goal (and (agent-on-top driver b1) (has-footbridge driver f)))
+
+    (:goal (and
+        (adj-bridge b1 b2 E)
+        (adj-bridge b2 b3 N)
+        (block-at b1 sq-1-1)
+        (block-at b2 sq-1-2)
+        (block-at b3 sq-2-2)
+        (at driver sq-1-1)
+        ;; TODO problem because it returns back from a pit to sq-1-1
+        ;(agent-on-top driver b2)
+        ;(not (on-ground driver)) (block-at b2 sq-1-2)
+        ;(at driver sq-3-3)
+        
+    ))
+    
 
     (:metric minimize (total-cost))
 )
