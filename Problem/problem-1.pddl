@@ -1,5 +1,5 @@
-(define (problem truck_1)
-    (:domain trucks-project-8)
+(define (problem problem_1)
+    (:domain trucks_domain)
     (:objects   
             sq-1-1 sq-1-2 sq-1-3 sq-1-4 sq-1-5 sq-1-6 sq-1-7 sq-1-8 sq-1-9 sq-1-10 
             sq-2-1 sq-2-2 sq-2-3 sq-2-4 sq-2-5 sq-2-6 sq-2-7 sq-2-8 sq-2-9 sq-2-10 
@@ -12,6 +12,7 @@
             sq-9-1 sq-9-2 sq-9-3 sq-9-4 sq-9-5 sq-9-6 sq-9-7 sq-9-8 sq-9-9 sq-9-10 
             sq-10-1 sq-10-2 sq-10-3 sq-10-4 sq-10-5 sq-10-6 sq-10-7 sq-10-8 sq-10-9 sq-10-10  - square
             driver - agent
+        
             N S W E - direction
             
     )
@@ -380,7 +381,7 @@
         (adj sq-10-9 sq-10-10 E)
         (adj sq-10-10 sq-9-10 S)
         (adj sq-10-10 sq-10-9 W)
-        
+
         (pit sq-2-2)
         (pit sq-3-3)
         (pit sq-4-1)

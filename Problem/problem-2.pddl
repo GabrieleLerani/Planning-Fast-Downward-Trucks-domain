@@ -1,5 +1,5 @@
-(define (problem truck_1)
-    (:domain trucks-project-8)
+(define (problem problem_2)
+    (:domain trucks_domain)
     (:objects   
             sq-1-1 sq-1-2 sq-1-3 sq-1-4 
             sq-2-1 sq-2-2 sq-2-3 sq-2-4 
@@ -87,9 +87,9 @@
         (foot-bridge-at f2 sq-2-1)
         
 
-        (is-clear b1)
-        (is-clear b2)
-        (is-clear b3)
+        ; (is-clear b1)
+        ; (is-clear b2)
+        ; (is-clear b3)
         
         
         (zero-turn driver)
