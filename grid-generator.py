@@ -1,3 +1,5 @@
+import random
+
 def get_neighbors(n,m,i,j):
     neighbors = []
     rows, cols = n, m
@@ -26,18 +28,52 @@ def print_neighbors(i, j, neighbors):
         if j-1 == elem[1]:
             print(f'(adj sq-{i}-{j} sq-{elem[0]}-{elem[1]} W)')
 
-n = 5  
-m = 5  
+  
+def get_square(n,m):
+    
+    squares = []
+    # Get neighbors for all elements in the matrix
+    for i in range(1,n+1):
+        for j in range(1,m+1):
+            squares.append((i,j))
+            neighbors = get_neighbors(n,m,i,j)
+            print_neighbors(i,j,neighbors)
 
-# Get neighbors for all elements in the matrix
-for i in range(1,n+1):
-    for j in range(1,m+1):
-        neighbors = get_neighbors(n,m,i,j)
-        print_neighbors(i,j,neighbors)
+    # print all squares
+    for i in range(1,n+1):
+        for j in range(1,m+1):
+            print(f"sq-{i}-{j}", end = " ")
+        print("\n")    
+    
+    return squares
 
-# print all squares
-for i in range(1,n+1):
-    for j in range(1,m+1):
-        print(f"sq-{i}-{j}", end = " ")
-    print("\n")    
+def get_pit(k, squares):
 
+    if k > len(squares):
+        print("More pits than squares!")
+        return None
+
+    pits = random.sample(squares, k)
+
+    for p in pits:
+        print(f'(pit sq-{p[0]}-{p[1]})')
+    return pits
+
+def get_block(b):
+    # get block for problem definition
+    for i in range(1,b+1):
+        print(f'b{i}', end=' ')
+    print("")
+
+
+    # get blocks for problem definition
+    for i in range(1,b+1):        
+        print(f'(block-at b{i} sq-1-1)')
+
+
+squares = get_square(4,3)
+# pits = get_pit(20,squares)
+# get_block(1000)
+
+
+# TODO insert random generation of pit in the grid
