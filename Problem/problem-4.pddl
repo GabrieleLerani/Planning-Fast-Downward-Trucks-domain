@@ -120,11 +120,7 @@
         
     
         (foot-bridge-at f1 sq-5-1)
-        
-        ; (is-clear b1)
-        ; (is-clear b2)
-        
-        
+           
         (zero-turn driver)
         (is-free driver)
         (on-ground driver)
@@ -133,30 +129,8 @@
 
     )
 
-    ;(:goal (and (at driver sq-3-3) (jammed driver)))
-    ;(:goal  (and (block-at b1 sq-3-3) (block-at b2 sq-3-3)))
-    ;(:goal  (and (block-at b1 sq-3-3) (block-at b2 sq-3-3) (on-top b2 b1) (at driver sq-1-1)) )
-    
-    ;(:goal (and  (block-at b1 sq-1-2) (at driver sq-1-2) (facing-west driver)))
-    ;(:goal (and  (bridge-top-level-built sq-1-2 sq-3-2)))
-    ;(:goal (and  (bridge-top-level-built sq-1-2 sq-3-2)))
-    
-    ;(:goal (and (at driver sq-2-3)))
-    
-
     (:goal (and
-        ; (adj-bridge b1 b2)
-        ; (adj-bridge b2 b3)
-        ; (adj-bridge b3 b4)
-        ; (block-at b1 sq-1-3)
-        ; (block-at b2 sq-2-3)
-        ; (block-at b3 sq-3-3)
-        ; (block-at b4 sq-4-3)
-        ; (block-at b3 sq-2-2)
-        ; (at driver sq-1-1)
-
-        ;(not (on-ground driver)) (facing-north driver) (adj sq-1-1 sq-1-2 E) (agent-on-top driver b1)
-        ;(agent-on-top driver b2)
+        
         (at driver sq-4-4)
         
         
